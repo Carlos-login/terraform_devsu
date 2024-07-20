@@ -196,6 +196,7 @@ resource "aws_lb_target_group" "devsu_target_group_ecs" {
   port     = 80
   protocol = "HTTP"
   vpc_id   = aws_vpc.devsu_vpc.id
+  target_type = "ip"
 
   health_check {
     path                = "/"

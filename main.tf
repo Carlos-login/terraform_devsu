@@ -11,3 +11,12 @@ module "ecs" {
   subnets     = module.vpc.public_subnets
   region      = var.region
 }
+
+
+resource "aws_ecr_repository" "my_ecr" {
+  name = "devsu"
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+}

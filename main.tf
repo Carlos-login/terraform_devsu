@@ -161,7 +161,7 @@ resource "aws_ecs_service" "devsu_service" {
   desired_count   = 1
   capacity_provider_strategy {
     capacity_provider = "FARGATE"
-    weight            = "100%"
+    weight            = "100"
   }
   network_configuration {
     subnets          = [aws_subnet.devsu_subnet_public1.id, aws_subnet.devsu_subnet_public2.id]

@@ -151,7 +151,3 @@ resource "aws_lb_listener" "devsu_lb_listener" {
     target_group_arn = aws_lb_target_group.devsu_target_group_ecs.arn
   }
 }
-
-output "ecs_cluster_id" {
-  value = aws_ecs_cluster.devsu_ecs.id
-}

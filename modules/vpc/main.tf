@@ -3,14 +3,14 @@ resource "aws_vpc" "devsu_vpc" {
 }
 
 resource "aws_subnet" "devsu_subnet_public1" {
-  vpc_id     = aws_vpc.devsu_vpc.id
-  cidr_block = var.public_subnet_cidrs[0]
+  vpc_id            = aws_vpc.devsu_vpc.id
+  cidr_block        = var.public_subnet_cidrs[0]
   availability_zone = "us-east-1a"
 }
 
 resource "aws_subnet" "devsu_subnet_public2" {
-  vpc_id     = aws_vpc.devsu_vpc.id
-  cidr_block = var.public_subnet_cidrs[1]
+  vpc_id            = aws_vpc.devsu_vpc.id
+  cidr_block        = var.public_subnet_cidrs[1]
   availability_zone = "us-east-1b"
 }
 
@@ -39,12 +39,4 @@ resource "aws_route_table_association" "public1" {
 resource "aws_route_table_association" "public2" {
   subnet_id      = aws_subnet.devsu_subnet_public2.id
   route_table_id = aws_route_table.public.id
-}
-
-output "vpc_id" {
-  value = aws_vpc.devsu_vpc.id
-}
-
-output "public_subnets" {
-  value = [aws_subnet.devsu_subnet_public1.id, aws_subnet.devsu_subnet_public2.id]
 }

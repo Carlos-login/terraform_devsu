@@ -51,7 +51,7 @@ resource "aws_route_table_association" "public2" {
 
 
 resource "aws_security_group" "ecs_service" {
-  vpc_id = aws_vpc.main.id
+  vpc_id = aws_vpc.devsu_vpc.id
 
   ingress {
     from_port   = 80
@@ -70,7 +70,7 @@ resource "aws_security_group" "ecs_service" {
 
 
 resource "aws_security_group" "ecs_service_alb" {
-  vpc_id = aws_vpc.main.id
+  vpc_id = aws_vpc.devsu_vpc.id
 
   ingress {
     from_port   = 80

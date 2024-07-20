@@ -166,11 +166,11 @@ resource "aws_ecs_service" "devsu_service" {
     assign_public_ip = true
   }
   load_balancer {
-    target_group_arn = aws_lb_target_group.devsu_lb.arn
+    target_group_arn = aws_lb_target_group.devsu_target_group_ecs.arn
     container_name   = "devsu-container"
     container_port   = 80
   }
-  depends_on = [aws_lb_listener.devsu_lb]
+  depends_on = [aws_lb_listener.devsu_lb_listener]
 }
 
 

@@ -159,7 +159,10 @@ resource "aws_ecs_service" "devsu_service" {
   cluster         = aws_ecs_cluster.devsu_ecs.id
   task_definition = aws_ecs_task_definition.devsu_task.arn
   desired_count   = 1
-  launch_type     = "FARGATE"
+  capacity_provider_strategy {
+    capacity_provider = "FARGATE"
+    weight            = "100%"
+  }
   network_configuration {
     subnets          = [aws_subnet.devsu_subnet_public1.id, aws_subnet.devsu_subnet_public2.id]
     security_groups  = [aws_security_group.ecs_service.id]

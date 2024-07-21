@@ -141,10 +141,30 @@ resource "aws_lb_target_group" "devsu_target_group_ecs" {
   }
 }
 
-resource "aws_lb_listener" "devsu_lb_listener" {
+
+
+resource "aws_lb_listener" "http_redirect" {
   load_balancer_arn = aws_lb.devsu_lb.arn
   port              = "80"
   protocol          = "HTTP"
+
+  default_action {
+    type = "redirect"
+    redirect {
+      port        = "443"
+      protocol    = "HTTPS"
+      status_code = "301"
+    }
+  }
+}
+ 
+
+resource "aws_lb_listener" "https" {
+  load_balancer_arn = aws_lb.devsu_lb.arn
+  port              = "443"
+  protocol          = "HTTPS"
+  ssl_policy        = "ELBSecurityPolicy-2016-08"
+  certificate_arn   = "arn:aws:acm:us-east-1:905418122995:certificate/06608752-89ef-4c71-9e69-48ff2a53bdf7"
 
   default_action {
     type             = "forward"

@@ -93,7 +93,7 @@ resource "aws_ecs_task_definition" "devsu_task" {
 }
 
 resource "aws_ecs_service" "devsu_service" {
-  name            = "devsu-service"
+  name            = "devsu-service-one"
   cluster         = aws_ecs_cluster.devsu_ecs.id
   task_definition = aws_ecs_task_definition.devsu_task.arn
   desired_count   = 1

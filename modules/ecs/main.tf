@@ -126,7 +126,7 @@ resource "aws_lb" "devsu_lb" {
 
 resource "aws_lb_target_group" "devsu_target_group_ecs" {
   name     = "devsu-target-group"
-  port     = 80
+  port     = 8000
   protocol = "HTTP"
   vpc_id   = var.vpc_id
   target_type = "ip"

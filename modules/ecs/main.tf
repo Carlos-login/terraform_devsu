@@ -111,7 +111,7 @@ resource "aws_ecs_service" "devsu_service" {
     container_name   = "devsu-container"
     container_port   = 8000
   }
-  depends_on = [aws_lb_listener.devsu_lb_listener]
+  depends_on = [aws_lb_listener.http_redirect,aws_lb_listener.https]
 }
 
 resource "aws_lb" "devsu_lb" {
@@ -153,7 +153,7 @@ resource "aws_lb_listener" "http_redirect" {
     redirect {
       port        = "443"
       protocol    = "HTTPS"
-      status_code = "301"
+      status_code = "HTTP_301"
     }
   }
 }

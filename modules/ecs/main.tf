@@ -79,8 +79,8 @@ resource "aws_ecs_task_definition" "devsu_task" {
       essential = true
       portMappings = [
         {
-          containerPort = 80
-          hostPort      = 80
+          containerPort = 8000
+          hostPort      = 8000
         }
       ]
     }

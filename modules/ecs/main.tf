@@ -2,8 +2,8 @@ resource "aws_security_group" "ecs_service" {
   vpc_id = var.vpc_id
 
   ingress {
-    from_port   = 80
-    to_port     = 80
+    from_port   = 8000
+    to_port     = 8000
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -73,7 +73,7 @@ resource "aws_ecs_task_definition" "devsu_task" {
   container_definitions    = jsonencode([
     {
       name      = "devsu-container"
-      image     = "nginx:latest"
+      image     = "905418122995.dkr.ecr.us-east-1.amazonaws.com/devsu:latest"
       cpu       = 256
       memory    = 512
       essential = true
@@ -109,7 +109,7 @@ resource "aws_ecs_service" "devsu_service" {
   load_balancer {
     target_group_arn = aws_lb_target_group.devsu_target_group_ecs.arn
     container_name   = "devsu-container"
-    container_port   = 80
+    container_port   = 8000
   }
   depends_on = [aws_lb_listener.devsu_lb_listener]
 }

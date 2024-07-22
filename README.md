@@ -27,7 +27,7 @@ El proyecto está organizado en los siguientes archivos y módulos:
 
 1. **Clona el repositorio**:
    ```sh
-gh repo clone Carlos-login/terraform_devsu
+    gh repo clone Carlos-login/terraform_devsu
 
 
 

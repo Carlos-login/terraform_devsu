@@ -51,5 +51,50 @@ Dependencias
 
         -Terraform
         -Una cuenta de AWS con las credenciales configuradas adecuadamente.
+## Diagrama de Infraestructura
 
+Este diagrama muestra una vista de alto nivel de la infraestructura creada por Terraform.
+
+```mermaid
+graph TD
+  A[main.tf]
+  B[Variables]
+  C[Providers]
+  D[Módulos]
+
+  A -->|define| B
+  A -->|define| C
+  A -->|llama| D
+
+  subgraph "Módulo VPC"
+    D1[VPC]
+    D2[Subnets]
+    D3[Internet Gateway]
+    D4[Route Table]
+    D -->|crea| D1
+    D -->|crea| D2
+    D -->|crea| D3
+    D -->|crea| D4
+  end
+
+  subgraph "Módulo ECS"
+    E1[Security Group]
+    E2[ECR Repository]
+    E3[IAM Role]
+    E4[ECS Cluster]
+    E5[Task Definition]
+    E6[ECS Service]
+    E7[Load Balancer]
+    E8[LB Listener]
+    E9[LB Target Group]
+    D -->|crea| E1
+    D -->|crea| E2
+    D -->|crea| E3
+    D -->|crea| E4
+    D -->|crea| E5
+    D -->|crea| E6
+    D -->|crea| E7
+    D -->|crea| E8
+    D -->|crea| E9
+  end
 

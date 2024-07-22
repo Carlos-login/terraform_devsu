@@ -27,8 +27,7 @@ El proyecto está organizado en los siguientes archivos y módulos:
 
 1. **Clona el repositorio**:
    ```sh
-   git clone https://github.com/tu_usuario/terraform_devsu.git
-   cd terraform_devsu
+gh repo clone Carlos-login/terraform_devsu
 
 
 
